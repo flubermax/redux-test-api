@@ -2,7 +2,7 @@ import React from 'react'
 
 import './Users.scss'
 
-const Users = React.memo(function Users({users, isLoaded, changePostsUserId, changePostsUserName, changeUserDataId, changeUserDataName}) {
+const Users = React.memo(function Users({users, isLoaded, changePostsUserId, changePostsUserName}) {
 
   const onSelectId = (id) => {
     if (changePostsUserId) {
@@ -15,19 +15,6 @@ const Users = React.memo(function Users({users, isLoaded, changePostsUserId, cha
       changePostsUserName(name);
     }
   }
-
-  const onSelectIdForChange = (id) => {
-    if (changeUserDataId) {
-      changeUserDataId(id);
-    }
-  }
-
-  const onSelectUserData = (name) => {
-    if (changeUserDataName) {
-      changeUserDataName(name);
-    }
-  }
-
 
   return (
     <div className="users">
@@ -44,7 +31,7 @@ const Users = React.memo(function Users({users, isLoaded, changePostsUserId, cha
             {user.name}
             <div className="users__item__row">
               <button onClick={() => {onSelectId(user.id); onSelectName(user.name) }}>Загрузить сообщения</button>
-              <button className="yellowBtn" onClick={() => {onSelectIdForChange(user.id); onSelectUserData(prompt())}}>Изменить имя</button>
+              <button className="yellowBtn">Изменить имя</button>
             </div>            
           </li>)) : 'Идёт загрузка...'}
       </ul>

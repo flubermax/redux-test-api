@@ -2,7 +2,6 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchUsers } from './redux/asyncActions/fetchUsers'
 import { Header, Users, NewUser, Posts } from './components'
-import { changeUserIdAction, changeUserNameAction } from './redux/usersReducer'
 import { setUserIdAction, setUserNameAction } from './redux/postsReducer'
 
 import './App.scss'
@@ -28,23 +27,11 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const setChangedUserId = React.useCallback((userId) => {
-    dispatch(changeUserIdAction(userId))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  const setChangedUserName = React.useCallback((userName) => {
-    dispatch(changeUserNameAction(userName))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-
   return (
     <div className="app">
       <div className="app__main">
         <Header />
-        <Users users={users} isLoaded={isLoaded} changePostsUserId={setActiveUserId} changePostsUserName={setActiveUserName}
-          changeUserDataId={setChangedUserId} changeUserDataName={setChangedUserName} />
+        <Users users={users} isLoaded={isLoaded} changePostsUserId={setActiveUserId} changePostsUserName={setActiveUserName} />
         <NewUser />
       </div>
       <div className="app__aside">
