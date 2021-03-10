@@ -1,0 +1,54 @@
+.new-user{  
+  padding: 15px 0 30px;
+  margin-top: 10px;
+  &__title{
+    margin-bottom: 10px;
+  }
+
+  &__row{
+    display: flex;
+    position: relative;
+  }
+
+  input{
+    flex-grow: 1;
+    font-size: 17px;
+    border-radius: 3px;
+    border: 1px solid #D7E7E7;
+    padding: 5px 10px;
+    transition: all 0.15s linear;
+    &:hover{
+      border: 1px solid #788888;
+    }
+    &:focus{
+      background-color: #F6F6ED;
+    }
+  }
+
+  button{
+    width: 110px;
+    border-radius: 3px;
+    font-weight: 700;
+    color: #fff;
+    background-color: green;
+    border: none;
+    margin-left: 15px;
+    &:hover{
+      background-color: #009400;
+    }
+  }
+
+  &__info{
+    position: absolute;
+    top: 43px;
+    left: 0;
+    font-size: 14px;    
+    &.error{
+      color: red;
+    }
+    &.success{
+      font-weight: 500;
+      color: green;
+    }
+  }
+}

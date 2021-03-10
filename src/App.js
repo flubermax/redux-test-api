@@ -1,23 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchUsers } from './redux/asyncActions/fetchUsers'
+import { Header, Users, NewUser, Posts } from './components'
+import { changeUserIdAction, changeUserNameAction } from './redux/usersReducer'
+import { setUserIdAction, setUserNameAction } from './redux/postsReducer'
+
+import './App.scss'
 
 function App() {
+  const dispatch = useDispatch()
+  const { users, isLoaded } = useSelector(({ usersReducer }) => usersReducer)
+  const [visiblePosts, setVisiblePosts] = React.useState(false);
+
+  React.useEffect(() => {
+    dispatch(fetchUsers())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const setActiveUserId = React.useCallback((userId) => {
+    dispatch(setUserIdAction(userId))
+    setVisiblePosts(true)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const setActiveUserName = React.useCallback((userName) => {
+    dispatch(setUserNameAction(userName))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const setChangedUserId = React.useCallback((userId) => {
+    dispatch(changeUserIdAction(userId))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const setChangedUserName = React.useCallback((userName) => {
+    dispatch(changeUserNameAction(userName))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <div className="app__main">
+        <Header />
+        <Users users={users} isLoaded={isLoaded} changePostsUserId={setActiveUserId} changePostsUserName={setActiveUserName}
+          changeUserDataId={setChangedUserId} changeUserDataName={setChangedUserName} />
+        <NewUser />
+      </div>
+      <div className="app__aside">
+        {visiblePosts ? <Posts /> : <div className="app__aside__info">Здесь будут отображаться сообщения пользователей</div>}
+      </div>
     </div>
   );
 }
