@@ -1,8 +1,10 @@
+import axios from 'axios'
 import { setUsersAction, setLoaded } from "../usersReducer"
 
-export const fetchUsers = () => (dispatch) => {
-  dispatch(setLoaded(false))
-  fetch('https://jsonplaceholder.typicode.com/users')
-    .then((response) => response.json())
-    .then(json => dispatch(setUsersAction(json)))
+export const fetchUsers = () => {
+  return async (dispatch) => {
+    dispatch(setLoaded(false))
+    const response = await axios.get('https://jsonplaceholder.typicode.com/users')
+    dispatch(setUsersAction(response.data))
+  }
 }

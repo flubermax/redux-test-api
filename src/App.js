@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchUsers } from './redux/asyncActions/fetchUsers'
+import { fetchFake, fetchUsers } from './redux/asyncActions/fetchUsers'
 import { Header, Users, NewUser, Posts } from './components'
 import { setUserIdAction, setUserNameAction } from './redux/postsReducer'
 
@@ -26,6 +26,7 @@ function App() {
     dispatch(setUserNameAction(userName))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
 
   return (
     <div className="app">

@@ -1,6 +1,5 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { fetchUsers } from '../../redux/asyncActions/fetchUsers'
 import {addUserAction} from '../../redux/usersReducer'
 
 import './NewUser.scss'
@@ -52,11 +51,6 @@ const  NewUser = () => {
     setFormValid(false)
     setTimeout(() => setNewUserSuccess(false), 3000);
   }
-
-  React.useEffect(() => {
-    dispatch(fetchUsers())
-     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   return (
     <form className="new-user">
