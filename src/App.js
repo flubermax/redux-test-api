@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchFake, fetchUsers } from './redux/asyncActions/fetchUsers'
+import { fetchUsers } from './redux/asyncActions/fetchUsers'
 import { Header, Users, NewUser, Posts } from './components'
 import { setUserIdAction, setUserNameAction } from './redux/postsReducer'
 
