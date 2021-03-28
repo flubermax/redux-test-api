@@ -32,5 +32,11 @@
         background-color: #EDCD00;
       }
     }
+    &.redBtn{
+      background-color: #FF0A1A;
+      &:hover{
+        background-color: #F32939;
+      }
+    }
   }
 }

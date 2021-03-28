@@ -40,7 +40,7 @@ const  NewUser = () => {
 
   const addUser = () => {
     const user = {
-      "id":  Date.now(),
+      "id": Date.now(),
       name,
     }
     dispatch(addUserAction(user))
@@ -74,8 +74,7 @@ const  NewUser = () => {
         {
           newUserSuccess && (<div className='new-user__info success'>Пользователь добавлен!</div>)          
         }
-      </div>      
-      
+      </div> 
     </form>
   );
 }

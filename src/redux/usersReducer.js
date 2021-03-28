@@ -5,6 +5,7 @@ const initialState = {
 }
 
 const ADD_USER = 'ADD_USER'
+const REMOVE_USER = 'REMOVE_USER'
 const SET_USERS = 'SET_USERS'
 const SET_LOADED = 'SET_LOADED'
 const USER_TO_CHANGE = 'USER_TO_CHANGE'
@@ -14,6 +15,9 @@ export const usersReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_USER:
       return { ...state, users: [...state.users, action.payload] }
+
+    case REMOVE_USER:
+      return { ...state, users: state.users.filter(user => user.id !== action.payload) }
 
     case SET_USERS:
       return { ...state, users: action.payload, isLoaded: true }
@@ -28,7 +32,7 @@ export const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         users: state.users.map(
-          (user, i = 0) => i === (state.userToChange - 1) ? { ...user, name: action.payload }
+          user => user.id === state.userToChange ? { ...user, name: action.payload }
             : user
         )
       }
@@ -39,6 +43,7 @@ export const usersReducer = (state = initialState, action) => {
 }
 
 export const addUserAction = (payload) => ({ type: ADD_USER, payload })
+export const removeUserAction = (payload) => ({ type: REMOVE_USER, payload })
 export const setUsersAction = (payload) => ({ type: SET_USERS, payload })
 
 export const setLoaded = (payload) => ({ type: SET_LOADED, payload })
