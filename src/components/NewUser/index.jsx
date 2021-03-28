@@ -4,7 +4,7 @@ import {addUserAction} from '../../redux/usersReducer'
 
 import './NewUser.scss'
 
-const  NewUser = () => {
+const  NewUser = React.memo(() => {
   const dispatch = useDispatch()
   const [name, setName] = React.useState('')
   const [nameError, setNameError] = React.useState('Введите имя пользователя')
@@ -77,6 +77,6 @@ const  NewUser = () => {
       </div> 
     </form>
   );
-}
+})
 
 export default NewUser;

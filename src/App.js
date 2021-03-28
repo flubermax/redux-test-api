@@ -15,14 +15,14 @@ function App() {
     dispatch(fetchUsers())
   }, [dispatch])
 
-  const setActiveUserId = React.useCallback((userId) => {
+  const setActiveUserId = (userId) => {
     dispatch(setUserIdAction(userId))
     setVisiblePosts(true)
-  }, [dispatch])
+  }
 
-  const setActiveUserName = React.useCallback((userName) => {
+  const setActiveUserName = (userName) => {
     dispatch(setUserNameAction(userName))
-  }, [dispatch])
+  }
 
 
   return (

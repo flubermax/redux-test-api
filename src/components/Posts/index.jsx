@@ -5,14 +5,13 @@ import { PostsList } from '../../components'
 
 import './Posts.scss'
 
-const Posts = React.memo(function Posts() {
+const Posts = () => {
   const dispatch = useDispatch()
   const { posts, userId, userName, postsLoaded } = useSelector(({ postsReducer }) => postsReducer)
 
   React.useEffect(() => {
     dispatch(fetchPosts(userId))
-     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userId])
+  }, [dispatch, userId])
 
   return (
     <div className="posts">
@@ -25,6 +24,6 @@ const Posts = React.memo(function Posts() {
       : <div className="posts__empty">Выбранный пользователь ещё не оставил ни одного сообщения.</div>}
     </div>
   );
-})
+}
 
 export default Posts;

@@ -19,7 +19,6 @@ const Users = React.memo(function Users({users, isLoaded, changePostsUserId, cha
     }
   }
 
-
   return (
     <div className="users">
       <h3 className="users__title">
